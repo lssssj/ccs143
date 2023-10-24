@@ -79,7 +79,7 @@ public class CoolAstBuilder extends CoolBaseVisitor<TreeNode> {
     }
     Features features = (Features) ctx.fl.accept(this);
     AbstractSymbol filename = AbstractTable.stringtable.addString(fileName);
-    return new class_c(ctx.start.getLine(), abstractSymbol, parentSymbol, features, filename);
+    return new class_c(ctx.st.getLine(), abstractSymbol, parentSymbol, features, filename);
   }
 
   @Override
