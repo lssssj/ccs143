@@ -1,0 +1,26 @@
+
+L
+java:S1197"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ8Ÿ–ê´1
+C
+java:S2129%"!Remove this "Integer" constructor(šµÛıÿÿÿÿ8 –ê´1
+Q
+java:S1874%"/Remove this use of "Integer"; it is deprecated.(šµÛıÿÿÿÿ8¡–ê´1
+C
+java:S2129&"!Remove this "Integer" constructor(¢òõ’øÿÿÿÿ8¡–ê´1
+Q
+java:S1874&"/Remove this use of "Integer"; it is deprecated.(¢òõ’øÿÿÿÿ8¡–ê´1
+>
+java:S2129*"!Remove this "Integer" constructor(Ô¯æ§8¡–ê´1
+L
+java:S1874*"/Remove this use of "Integer"; it is deprecated.(Ô¯æ§8¡–ê´1
+C
+java:S2129+"!Remove this "Integer" constructor(Ù¢±ùÿÿÿÿ8¡–ê´1
+Q
+java:S1874+"/Remove this use of "Integer"; it is deprecated.(Ù¢±ùÿÿÿÿ8¡–ê´1
+L	java:S106."+Replace this use of System.out by a logger.(ß‹À±şÿÿÿÿ8¡–ê´1
+G	java:S1061"+Replace this use of System.out by a logger.(’ì½8¢–ê´1
+L	java:S1064"+Replace this use of System.out by a logger.(è«òÀüÿÿÿÿ8¢–ê´1
+L	java:S1067"+Replace this use of System.out by a logger.(‰üÙêøÿÿÿÿ8¢–ê´1
+L	java:S106="+Replace this use of System.out by a logger.(è«òÀüÿÿÿÿ8¢–ê´1
+L	java:S106@"+Replace this use of System.out by a logger.(ß‹À±şÿÿÿÿ8£–ê´1
+G	java:S106C"+Replace this use of System.out by a logger.(«‘ñ8£–ê´1

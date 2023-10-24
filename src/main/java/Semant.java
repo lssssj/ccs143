@@ -19,24 +19,28 @@ ON AN "AS IS" BASIS, AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATION TO
 PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 */
 
+import cool.CoolLexer;
+import cool.CoolParser;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 import java_cup.runtime.Symbol;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 /** Static semantics driver class */
 class Semant {
 
   /** Reads AST from from consosle, and outputs the new AST */
-  public static void main(String[] args) {
-    args = Flags.handleFlags(args);
-    try {
-      ASTLexer lexer = new ASTLexer(new InputStreamReader(System.in));
-      ASTParser parser = new ASTParser(lexer);
-      Object result = parser.parse().value;
-      ((Program)result).semant();
-      ((Program)result).dump_with_types(System.out, 0);
-    } catch (Exception ex) {
-      ex.printStackTrace(System.err);
-    }
+  public static void main(String[] args) throws IOException {
+    programc code = Cool.compile("test.cl", "test2.cl");
+    code.semant();
+    code.dump_with_types(System.out, 0);
+
   }
 }

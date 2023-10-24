@@ -1,4 +1,11 @@
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /** This class may be used to contain the semantic information such as
  * the inheritance graph.  You may use it or not as you like: it is only
@@ -166,17 +173,115 @@ class ClassTable {
 
 	/* Do somethind with Object_class, IO_class, Int_class,
            Bool_class, and Str_class here */
-
+    name2class.put(TreeConstants.Object_, Object_class);
+    name2class.put(TreeConstants.IO, IO_class);
+    name2class.put(TreeConstants.Str, Str_class);
+    name2class.put(TreeConstants.Int, Int_class);
+    name2class.put(TreeConstants.Bool, Bool_class);
   }
 
 
+  private Map<AbstractSymbol, class_c> name2class = new HashMap<>();
+
+  public ClassTable() {
+    semantErrors = 0;
+    errorStream = System.err;
+    installBasicClasses();
+  }
 
   public ClassTable(Classes cls) {
     semantErrors = 0;
     errorStream = System.err;
+    installBasicClasses();
 
+    // 检查类的继承图
+    // 1。 父类不能是自己
+    // 2。 父类必须是类
+    // 3。 只能单继承
+    // 4. 一些类不能被继承（String, Bool, Int)
+
+    for (int i = 0; i < cls.getLength(); i++) {
+      class_c nth = (class_c) cls.getNth(i);
+      if (nth.name.equals("SELF_TYPE")) {
+        semantError(nth).println(" class's name can't be SELF_TYPE");
+      }
+      if (nth.name.equals(nth.parent)) {
+        semantError(nth).printf(" class %s can't inherit self.\n", nth.name.str);
+      }
+      if (nth.parent.equals(TreeConstants.Bool)) {
+        semantError(nth).printf(" class Bool can't be inherited by %s.\n", nth.name.str);
+      }
+      if (nth.parent.equals(TreeConstants.Int)) {
+        semantError(nth).printf(" class Int can't be inherited by %s.\n", nth.name.str);
+      }
+      if (nth.parent.equals(TreeConstants.Str)) {
+        semantError(nth).printf(" class String can't be inherited by %s.\n", nth.name.str);
+      }
+      if (name2class.containsKey(nth.name.str)) {
+        semantError(nth).printf(" class %s has been defined.\n", nth.name.str);
+      }
+      name2class.put(nth.name, nth);
+    }
+    for (int i = 0; i < cls.getLength(); i++) {
+      class_c nth = (class_c) cls.getNth(i);
+      if (!name2class.containsKey(nth.parent)) {
+        semantError(nth).printf(" class %s's parent %s is not defined.\n", nth.name.str, nth.parent.str);
+      }
+    }
+    if (!name2class.containsKey(TreeConstants.Main)) {
+      semantErrors++;
+      errorStream.println("Found No Main class.");
+    }
+    // 检查有没有类被循环继承如，A inherits B, B inherits A
+    for (int i = 0; i < cls.getLength(); i++) {
+      Set<String> childs = new HashSet<>();
+      class_c nth = (class_c) cls.getNth(i);
+
+      while (!nth.parent.str.equals("Object")) {
+        childs.add(nth.name.str);
+        nth = name2class.get(nth.parent);
+        if (childs.contains(nth.name.str)) {
+          semantError(nth).printf(" found cycle inherits: class %s inherits %s.\n", nth.name.str, nth.parent.str);
+          break;
+        }
+      }
+
+    }
     /* fill this in */
   }
+
+  public AbstractSymbol commonLeastAncestor(AbstractSymbol type1, AbstractSymbol type2) {
+    List<AbstractSymbol> list1 = findInheritGraph(type1);
+    List<AbstractSymbol> list2 = findInheritGraph(type2);
+    int index1 = list1.size() - 1, index2 = list2.size() - 1;
+    AbstractSymbol ret = TreeConstants.Object_;
+    while (index1 >= 0 && index2 >= 0) {
+      if (list1.get(index1).equals(list2.get(index2))) {
+        ret = list1.get(index1);
+        index1--;
+        index2--;
+      } else {
+        break;
+      }
+    }
+    return ret;
+  }
+
+  public List<AbstractSymbol> findInheritGraph(AbstractSymbol type) {
+    List<AbstractSymbol> types = new ArrayList<>();
+    while (!type.equals(TreeConstants.Object_)) {
+      types.add(type);
+      type = name2class.get(type).parent;
+    }
+    types.add(TreeConstants.Object_);
+    return types;
+  }
+
+  public class_c findClass(AbstractSymbol className) {
+    return name2class.get(className);
+  }
+
+
 
   /** Prints line number and file name of the given class.
    *

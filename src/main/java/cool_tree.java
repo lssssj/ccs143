@@ -36,7 +36,8 @@ abstract class Class_ extends TreeNode {
  <p>
  See <a href="ListNode.html">ListNode</a> for full documentation. */
 class Classes extends ListNode {
-  public final static Class elementClass = Class_.class;
+
+  public static final Class elementClass = Class_.class;
   /** Returns class of this lists's elements */
   public Class getElementClass() {
     return elementClass;
@@ -56,6 +57,12 @@ class Classes extends ListNode {
   public TreeNode copy() {
     return new Classes(lineNumber, copyElements());
   }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitClasses(this, context);
+  }
+
 }
 
 
@@ -93,6 +100,12 @@ class Features extends ListNode {
   public TreeNode copy() {
     return new Features(lineNumber, copyElements());
   }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitFeatures(this, context);
+  }
+
 }
 
 
@@ -130,6 +143,12 @@ class Formals extends ListNode {
   public TreeNode copy() {
     return new Formals(lineNumber, copyElements());
   }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitFormals(this, context);
+  }
+
 }
 
 
@@ -176,6 +195,11 @@ class Expressions extends ListNode {
   public TreeNode copy() {
     return new Expressions(lineNumber, copyElements());
   }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitExpressions(this, context);
+  }
 }
 
 
@@ -213,6 +237,12 @@ class Cases extends ListNode {
   public TreeNode copy() {
     return new Cases(lineNumber, copyElements());
   }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitCases(this, context);
+  }
+
 }
 
 
@@ -224,7 +254,7 @@ class programc extends Program {
   /** Creates "programc" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for classes
+   * @param a1 initial value for classes
    */
   public programc(int lineNumber, Classes a1) {
     super(lineNumber);
@@ -236,6 +266,11 @@ class programc extends Program {
   public void dump(PrintStream out, int n) {
     out.print(Utilities.pad(n) + "programc\n");
     classes.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitProgramc(this, context);
   }
 
 
@@ -267,7 +302,8 @@ class programc extends Program {
     ClassTable classTable = new ClassTable(classes);
 
     /* some semantic analysis code may go here */
-
+    TypeChecker checker = new TypeChecker(classTable);
+    this.accept(checker, new SymbolTable());
     if (classTable.errors()) {
       System.err.println("Compilation halted due to static semantic errors.");
       System.exit(1);
@@ -288,10 +324,10 @@ class class_c extends Class_ {
   /** Creates "class_c" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for name
-   * @param a1 initial value for parent
-   * @param a2 initial value for features
-   * @param a3 initial value for filename
+   * @param a1 initial value for name
+   * @param a2 initial value for parent
+   * @param a3 initial value for features
+   * @param a4 initial value for filename
    */
   public class_c(int lineNumber, AbstractSymbol a1, AbstractSymbol a2, Features a3, AbstractSymbol a4) {
     super(lineNumber);
@@ -309,6 +345,11 @@ class class_c extends Class_ {
     dump_AbstractSymbol(out, n+2, parent);
     features.dump(out, n+2);
     dump_AbstractSymbol(out, n+2, filename);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitClass_c(this, context);
   }
 
 
@@ -344,10 +385,10 @@ class method extends Feature {
   /** Creates "method" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for name
-   * @param a1 initial value for formals
-   * @param a2 initial value for return_type
-   * @param a3 initial value for expr
+   * @param a1 initial value for name
+   * @param a2 initial value for formals
+   * @param a3 initial value for return_type
+   * @param a4 initial value for expr
    */
   public method(int lineNumber, AbstractSymbol a1, Formals a2, AbstractSymbol a3, Expression a4) {
     super(lineNumber);
@@ -365,6 +406,11 @@ class method extends Feature {
     formals.dump(out, n+2);
     dump_AbstractSymbol(out, n+2, return_type);
     expr.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitMethod(this, context);
   }
 
 
@@ -392,9 +438,9 @@ class attr extends Feature {
   /** Creates "attr" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for name
-   * @param a1 initial value for type_decl
-   * @param a2 initial value for init
+   * @param a1 initial value for name
+   * @param a2 initial value for type_decl
+   * @param a3 initial value for init
    */
   public attr(int lineNumber, AbstractSymbol a1, AbstractSymbol a2, Expression a3) {
     super(lineNumber);
@@ -410,6 +456,11 @@ class attr extends Feature {
     dump_AbstractSymbol(out, n+2, name);
     dump_AbstractSymbol(out, n+2, type_decl);
     init.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitAttr(this, context);
   }
 
 
@@ -433,8 +484,8 @@ class formalc extends Formal {
   /** Creates "formalc" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for name
-   * @param a1 initial value for type_decl
+   * @param a1 initial value for name
+   * @param a2 initial value for type_decl
    */
   public formalc(int lineNumber, AbstractSymbol a1, AbstractSymbol a2) {
     super(lineNumber);
@@ -448,6 +499,11 @@ class formalc extends Formal {
     out.print(Utilities.pad(n) + "formalc\n");
     dump_AbstractSymbol(out, n+2, name);
     dump_AbstractSymbol(out, n+2, type_decl);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitFormalc(this, context);
   }
 
 
@@ -471,9 +527,9 @@ class branch extends Case {
   /** Creates "branch" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for name
-   * @param a1 initial value for type_decl
-   * @param a2 initial value for expr
+   * @param a1 initial value for name
+   * @param a2 initial value for type_decl
+   * @param a3 initial value for expr
    */
   public branch(int lineNumber, AbstractSymbol a1, AbstractSymbol a2, Expression a3) {
     super(lineNumber);
@@ -489,6 +545,11 @@ class branch extends Case {
     dump_AbstractSymbol(out, n+2, name);
     dump_AbstractSymbol(out, n+2, type_decl);
     expr.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitBranch(this, context);
   }
 
 
@@ -512,8 +573,8 @@ class assign extends Expression {
   /** Creates "assign" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for name
-   * @param a1 initial value for expr
+   * @param a1 initial value for name
+   * @param a2 initial value for expr
    */
   public assign(int lineNumber, AbstractSymbol a1, Expression a2) {
     super(lineNumber);
@@ -527,6 +588,11 @@ class assign extends Expression {
     out.print(Utilities.pad(n) + "assign\n");
     dump_AbstractSymbol(out, n+2, name);
     expr.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitAssign(this, context);
   }
 
 
@@ -552,10 +618,10 @@ class static_dispatch extends Expression {
   /** Creates "static_dispatch" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for expr
-   * @param a1 initial value for type_name
-   * @param a2 initial value for name
-   * @param a3 initial value for actual
+   * @param a1 initial value for expr
+   * @param a2 initial value for type_name
+   * @param a3 initial value for name
+   * @param a4 initial value for actual
    */
   public static_dispatch(int lineNumber, Expression a1, AbstractSymbol a2, AbstractSymbol a3, Expressions a4) {
     super(lineNumber);
@@ -573,6 +639,11 @@ class static_dispatch extends Expression {
     dump_AbstractSymbol(out, n+2, type_name);
     dump_AbstractSymbol(out, n+2, name);
     actual.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitStaticDispatch(this, context);
   }
 
 
@@ -603,9 +674,9 @@ class dispatch extends Expression {
   /** Creates "dispatch" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for expr
-   * @param a1 initial value for name
-   * @param a2 initial value for actual
+   * @param a1 initial value for expr
+   * @param a2 initial value for name
+   * @param a3 initial value for actual
    */
   public dispatch(int lineNumber, Expression a1, AbstractSymbol a2, Expressions a3) {
     super(lineNumber);
@@ -621,6 +692,11 @@ class dispatch extends Expression {
     expr.dump(out, n+2);
     dump_AbstractSymbol(out, n+2, name);
     actual.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitDispatch(this, context);
   }
 
 
@@ -650,9 +726,9 @@ class cond extends Expression {
   /** Creates "cond" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for pred
+   * @param a1 initial value for pred
    * @param a1 initial value for then_exp
-   * @param a2 initial value for else_exp
+   * @param a3 initial value for else_exp
    */
   public cond(int lineNumber, Expression a1, Expression a2, Expression a3) {
     super(lineNumber);
@@ -668,6 +744,11 @@ class cond extends Expression {
     pred.dump(out, n+2);
     then_exp.dump(out, n+2);
     else_exp.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitCond(this, context);
   }
 
 
@@ -692,8 +773,8 @@ class loop extends Expression {
   /** Creates "loop" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for pred
-   * @param a1 initial value for body
+   * @param a1 initial value for pred
+   * @param a2 initial value for body
    */
   public loop(int lineNumber, Expression a1, Expression a2) {
     super(lineNumber);
@@ -707,6 +788,11 @@ class loop extends Expression {
     out.print(Utilities.pad(n) + "loop\n");
     pred.dump(out, n+2);
     body.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitLoop(this, context);
   }
 
 
@@ -730,8 +816,8 @@ class typcase extends Expression {
   /** Creates "typcase" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for expr
-   * @param a1 initial value for cases
+   * @param a1 initial value for expr
+   * @param a2 initial value for cases
    */
   public typcase(int lineNumber, Expression a1, Cases a2) {
     super(lineNumber);
@@ -745,6 +831,11 @@ class typcase extends Expression {
     out.print(Utilities.pad(n) + "typcase\n");
     expr.dump(out, n+2);
     cases.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitTypeCase(this, context);
   }
 
 
@@ -769,7 +860,7 @@ class block extends Expression {
   /** Creates "block" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for body
+   * @param a1 initial value for body
    */
   public block(int lineNumber, Expressions a1) {
     super(lineNumber);
@@ -781,6 +872,11 @@ class block extends Expression {
   public void dump(PrintStream out, int n) {
     out.print(Utilities.pad(n) + "block\n");
     body.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitBlock(this, context);
   }
 
 
@@ -807,10 +903,10 @@ class let extends Expression {
   /** Creates "let" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for identifier
-   * @param a1 initial value for type_decl
-   * @param a2 initial value for init
-   * @param a3 initial value for body
+   * @param a1 initial value for identifier
+   * @param a2 initial value for type_decl
+   * @param a3 initial value for init
+   * @param a4 initial value for body
    */
   public let(int lineNumber, AbstractSymbol a1, AbstractSymbol a2, Expression a3, Expression a4) {
     super(lineNumber);
@@ -828,6 +924,11 @@ class let extends Expression {
     dump_AbstractSymbol(out, n+2, type_decl);
     init.dump(out, n+2);
     body.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitLet(this, context);
   }
 
 
@@ -853,8 +954,8 @@ class plus extends Expression {
   /** Creates "plus" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for e1
-   * @param a1 initial value for e2
+   * @param a1 initial value for e1
+   * @param a2 initial value for e2
    */
   public plus(int lineNumber, Expression a1, Expression a2) {
     super(lineNumber);
@@ -868,6 +969,11 @@ class plus extends Expression {
     out.print(Utilities.pad(n) + "plus\n");
     e1.dump(out, n+2);
     e2.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitPlus(this, context);
   }
 
 
@@ -891,8 +997,8 @@ class sub extends Expression {
   /** Creates "sub" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for e1
-   * @param a1 initial value for e2
+   * @param a1 initial value for e1
+   * @param a2 initial value for e2
    */
   public sub(int lineNumber, Expression a1, Expression a2) {
     super(lineNumber);
@@ -906,6 +1012,11 @@ class sub extends Expression {
     out.print(Utilities.pad(n) + "sub\n");
     e1.dump(out, n+2);
     e2.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitSub(this, context);
   }
 
 
@@ -929,8 +1040,8 @@ class mul extends Expression {
   /** Creates "mul" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for e1
-   * @param a1 initial value for e2
+   * @param a1 initial value for e1
+   * @param a2 initial value for e2
    */
   public mul(int lineNumber, Expression a1, Expression a2) {
     super(lineNumber);
@@ -944,6 +1055,11 @@ class mul extends Expression {
     out.print(Utilities.pad(n) + "mul\n");
     e1.dump(out, n+2);
     e2.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitMul(this, context);
   }
 
 
@@ -967,8 +1083,8 @@ class divide extends Expression {
   /** Creates "divide" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for e1
-   * @param a1 initial value for e2
+   * @param a1 initial value for e1
+   * @param a2 initial value for e2
    */
   public divide(int lineNumber, Expression a1, Expression a2) {
     super(lineNumber);
@@ -982,6 +1098,11 @@ class divide extends Expression {
     out.print(Utilities.pad(n) + "divide\n");
     e1.dump(out, n+2);
     e2.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitDivide(this, context);
   }
 
 
@@ -1004,7 +1125,7 @@ class neg extends Expression {
   /** Creates "neg" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for e1
+   * @param a1 initial value for e1
    */
   public neg(int lineNumber, Expression a1) {
     super(lineNumber);
@@ -1016,6 +1137,11 @@ class neg extends Expression {
   public void dump(PrintStream out, int n) {
     out.print(Utilities.pad(n) + "neg\n");
     e1.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitNegate(this, context);
   }
 
 
@@ -1038,8 +1164,8 @@ class lt extends Expression {
   /** Creates "lt" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for e1
-   * @param a1 initial value for e2
+   * @param a1 initial value for e1
+   * @param a2 initial value for e2
    */
   public lt(int lineNumber, Expression a1, Expression a2) {
     super(lineNumber);
@@ -1053,6 +1179,11 @@ class lt extends Expression {
     out.print(Utilities.pad(n) + "lt\n");
     e1.dump(out, n+2);
     e2.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitLt(this, context);
   }
 
 
@@ -1076,8 +1207,8 @@ class eq extends Expression {
   /** Creates "eq" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for e1
-   * @param a1 initial value for e2
+   * @param a1 initial value for e1
+   * @param a2 initial value for e2
    */
   public eq(int lineNumber, Expression a1, Expression a2) {
     super(lineNumber);
@@ -1093,6 +1224,11 @@ class eq extends Expression {
     e2.dump(out, n+2);
   }
 
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitEq(this, context);
+  }
+
 
   public void dump_with_types(PrintStream out, int n) {
     dump_line(out, n);
@@ -1101,6 +1237,8 @@ class eq extends Expression {
     e2.dump_with_types(out, n + 2);
     dump_type(out, n);
   }
+
+
 
 }
 
@@ -1114,8 +1252,8 @@ class leq extends Expression {
   /** Creates "leq" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for e1
-   * @param a1 initial value for e2
+   * @param a1 initial value for e1
+   * @param a2 initial value for e2
    */
   public leq(int lineNumber, Expression a1, Expression a2) {
     super(lineNumber);
@@ -1129,6 +1267,11 @@ class leq extends Expression {
     out.print(Utilities.pad(n) + "leq\n");
     e1.dump(out, n+2);
     e2.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitLeq(this, context);
   }
 
 
@@ -1151,7 +1294,7 @@ class comp extends Expression {
   /** Creates "comp" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for e1
+   * @param a1 initial value for e1
    */
   public comp(int lineNumber, Expression a1) {
     super(lineNumber);
@@ -1163,6 +1306,11 @@ class comp extends Expression {
   public void dump(PrintStream out, int n) {
     out.print(Utilities.pad(n) + "comp\n");
     e1.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitComp(this, context);
   }
 
 
@@ -1184,7 +1332,7 @@ class int_const extends Expression {
   /** Creates "int_const" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for token
+   * @param a1 initial value for token
    */
   public int_const(int lineNumber, AbstractSymbol a1) {
     super(lineNumber);
@@ -1196,6 +1344,11 @@ class int_const extends Expression {
   public void dump(PrintStream out, int n) {
     out.print(Utilities.pad(n) + "int_const\n");
     dump_AbstractSymbol(out, n+2, token);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitIntConst(this, context);
   }
 
 
@@ -1217,7 +1370,7 @@ class bool_const extends Expression {
   /** Creates "bool_const" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for val
+   * @param a1 initial value for val
    */
   public bool_const(int lineNumber, Boolean a1) {
     super(lineNumber);
@@ -1229,6 +1382,11 @@ class bool_const extends Expression {
   public void dump(PrintStream out, int n) {
     out.print(Utilities.pad(n) + "bool_const\n");
     dump_Boolean(out, n+2, val);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitBoolConst(this, context);
   }
 
 
@@ -1250,7 +1408,7 @@ class string_const extends Expression {
   /** Creates "string_const" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for token
+   * @param a1 initial value for token
    */
   public string_const(int lineNumber, AbstractSymbol a1) {
     super(lineNumber);
@@ -1262,6 +1420,11 @@ class string_const extends Expression {
   public void dump(PrintStream out, int n) {
     out.print(Utilities.pad(n) + "string_const\n");
     dump_AbstractSymbol(out, n+2, token);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitStringConst(this, context);
   }
 
 
@@ -1285,7 +1448,7 @@ class new_ extends Expression {
   /** Creates "new_" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for type_name
+   * @param a1 initial value for type_name
    */
   public new_(int lineNumber, AbstractSymbol a1) {
     super(lineNumber);
@@ -1297,6 +1460,11 @@ class new_ extends Expression {
   public void dump(PrintStream out, int n) {
     out.print(Utilities.pad(n) + "new_\n");
     dump_AbstractSymbol(out, n+2, type_name);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitNew(this, context);
   }
 
 
@@ -1318,7 +1486,7 @@ class isvoid extends Expression {
   /** Creates "isvoid" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for e1
+   * @param a1 initial value for e1
    */
   public isvoid(int lineNumber, Expression a1) {
     super(lineNumber);
@@ -1330,6 +1498,11 @@ class isvoid extends Expression {
   public void dump(PrintStream out, int n) {
     out.print(Utilities.pad(n) + "isvoid\n");
     e1.dump(out, n+2);
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitIsVoid(this, context);
   }
 
 
@@ -1361,6 +1534,11 @@ class no_expr extends Expression {
     out.print(Utilities.pad(n) + "no_expr\n");
   }
 
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitNoExpr(this, context);
+  }
+
 
   public void dump_with_types(PrintStream out, int n) {
     dump_line(out, n);
@@ -1379,7 +1557,7 @@ class object extends Expression {
   /** Creates "object" AST node.
    *
    * @param lineNumber the line in the source file from which this node came.
-   * @param a0 initial value for name
+   * @param a1 initial value for name
    */
   public object(int lineNumber, AbstractSymbol a1) {
     super(lineNumber);
@@ -1391,6 +1569,15 @@ class object extends Expression {
   public void dump(PrintStream out, int n) {
     out.print(Utilities.pad(n) + "object\n");
     dump_AbstractSymbol(out, n+2, name);
+  }
+
+  public AbstractSymbol getName() {
+    return name;
+  }
+
+  @Override
+  public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+    return visitor.visitObject(this, context);
   }
 
 

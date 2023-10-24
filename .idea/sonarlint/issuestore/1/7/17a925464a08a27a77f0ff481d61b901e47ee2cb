@@ -1,0 +1,6 @@
+
+v	java:S115%"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¼Ô›8ƒ«—ê´1
+k
+java:S1845("NRename field "ERROR" to prevent any misunderstanding/clash with field "error".(çÕê¬8Š«—ê´1
+W
+java:S1118":Add a private constructor to hide the implicit public one.(Ô¹“²8«—ê´1

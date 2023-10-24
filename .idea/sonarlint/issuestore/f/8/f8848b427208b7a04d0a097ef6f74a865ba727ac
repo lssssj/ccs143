@@ -1,0 +1,26 @@
+
+L	java:S106+"+Replace this use of System.out by a logger.(—ñèøÿÿÿÿ8¬×¬½µ1
+H
+java:S1128"+Remove this unused import 'cool.CoolLexer'.(Á„¶É8¾±½µ1
+I
+java:S1128",Remove this unused import 'cool.CoolParser'.(‹¥ö8¾±½µ1
+\
+java:S1128":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ8¾±½µ1
+Q
+java:S1128"/Remove this unused import 'java.io.FileReader'.(Â¡¢äşÿÿÿÿ8¾±½µ1
+S
+java:S1128"6Remove this unused import 'java.io.InputStreamReader'.(ãˆÎÉ8¾±½µ1
+H
+java:S1128"+Remove this unused import 'java.io.Reader'.(µû¨é8¾±½µ1
+N
+java:S1128"1Remove this unused import 'java.io.StringReader'.(¡Ö£8¾±½µ1
+Q
+java:S1128"4Remove this unused import 'java_cup.runtime.Symbol'.(ø¤ó³8¾±½µ1
+^
+java:S1128"<Remove this unused import 'org.antlr.v4.runtime.CharStream'.(½û°„úÿÿÿÿ8¾±½µ1
+_
+java:S1128 "=Remove this unused import 'org.antlr.v4.runtime.CharStreams'.(š¤’Úøÿÿÿÿ8¾±½µ1
+`
+java:S1128!"CRemove this unused import 'org.antlr.v4.runtime.CommonTokenStream'.(—ÀŸ¹8¾±½µ1
+b
+java:S1128""@Remove this unused import 'org.antlr.v4.runtime.tree.ParseTree'.(§¬÷ãşÿÿÿÿ8¾±½µ1

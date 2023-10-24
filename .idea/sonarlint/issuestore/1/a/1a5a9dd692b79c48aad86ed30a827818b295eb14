@@ -1,0 +1,12 @@
+
+p	java:S100¨"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®Þ‹µüÿÿÿÿ8‘ìÒ¿µ1
+>
+java:S2153©"Remove the unboxing of "b".(Æ¶¸£ûÿÿÿÿ8‘ìÒ¿µ1
+D
+java:S2129©"!Remove this "Boolean" constructor(Æ¶¸£ûÿÿÿÿ8’ìÒ¿µ1
+R
+java:S1874©"/Remove this use of "Boolean"; it is deprecated.(Æ¶¸£ûÿÿÿÿ8’ìÒ¿µ1
+p	java:S100°"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÞÀö°ûÿÿÿÿ8’ìÒ¿µ1
+p	java:S100¸"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è»Ù…úÿÿÿÿ8’ìÒ¿µ1
+k	java:S100Á"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘èÛœ8’ìÒ¿µ1
+p	java:S100Ê"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢†Þâùÿÿÿÿ8“ìÒ¿µ1

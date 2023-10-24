@@ -23,6 +23,8 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.FileOutputStream;
+import java.io.Reader;
+import java.io.StringReader;
 import java_cup.runtime.Symbol;
 
 /** Static semantics driver class */
@@ -31,12 +33,32 @@ class Cgen {
   /** Reads AST from from consosle, and outputs the assembly code */
   public static void main(String[] args) {
     //args = Flags.handleFlags(args);
-    String source = "";
-
+    String source = "class C {\n"
+        + "\ta : Int;\n"
+        + "\tb : Bool;\n"
+        + "\tinit(x : Int, y : Bool) : C {\n"
+        + "           {\n"
+        + "\t\ta <- x;\n"
+        + "\t\tb <- y;\n"
+        + "\t\tself;\n"
+        + "           }\n"
+        + "\t};\n"
+        + "};\n"
+        + "\n"
+        + "Class Main {\n"
+        + "\tmain():C {\n"
+        + "\t {\n"
+        + "\t  (new C).init(1,1);\n"
+        + "\t  (new C).init(1,true,3);\n"
+        + "\t  (new C).iinit(1,true);\n"
+        + "\t  (new C);\n"
+        + "\t }\n"
+        + "\t};\n"
+        + "};\n";
+    Reader reader = new StringReader(source);
     try {
-      ASTLexer lexer = new ASTLexer(new InputStreamReader(System.in));
-      ASTParser parser = new ASTParser(lexer);
-      Object result = parser.parse().value;
+      // ASTLexer lexer = new ASTLexer(new InputStreamReader(System.in));
+
 
       PrintStream output = System.out;
       String filename = null;

@@ -1,0 +1,9 @@
+
+m
+java:S1206]"PThis class overrides "equals()" and should therefore also override "hashCode()".(¬‰¼¯8³ÒŠé´1
+[
+java:S59939"9Change the visibility of this constructor to "protected".(¡Ó°ºùÿÿÿÿ8´ÒŠé´1
+u
+java:S2975m"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(ÛŽå˜ÿÿÿÿÿ8¼ÒŠé´1
+M
+java:S1128"0Remove this unused import 'java.io.PrintStream'.(×êŽ’8½ÒŠé´1

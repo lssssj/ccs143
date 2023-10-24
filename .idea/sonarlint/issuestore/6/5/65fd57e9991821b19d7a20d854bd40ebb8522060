@@ -1,0 +1,24 @@
+
+W
+java:S1141L"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8Ñ©—é´1
+f
+java:S2095M"IUse try-with-resources or close this "PrintStream" in a "finally" clause.(¥ë¦8°‚Ã¾µ1
+W
+java:S1854:":Remove this useless assignment to local variable "reader".(Ö‡±ÿ8²‚Ã¾µ1
+W
+java:S1854?":Remove this useless assignment to local variable "output".(ÈÎµ°8¢ÓÏí´1
+W
+java:S1854M":Remove this useless assignment to local variable "output".(¥ë¦8¢ÓÏí´1
+X	java:S125#"<This block of commented-out lines of code should be removed.(¥äªà8½ñÊí´1
+H
+java:S1481:"+Remove this unused "reader" local variable.(Ö‡±ÿ8³‚Ã¾µ1
+]	java:S125<"<This block of commented-out lines of code should be removed.(ñ†×øÿÿÿÿ8ÖÔí´1
+G	java:S106?"+Replace this use of System.out by a logger.(ÈÎµ°8ä©—é´1
+H
+java:S1481?"+Remove this unused "output" local variable.(ÈÎµ°8§ÓÏí´1
+]	java:S125S"<This block of commented-out lines of code should be removed.(²ÔÕîşÿÿÿÿ8¨ÓÏí´1
+G	java:S106U"+Replace this use of System.err by a logger.(Ç¡«…8æ©—é´1
+S
+java:S1128"6Remove this unused import 'java.io.InputStreamReader'.(ãˆÎÉ8´‚Ã¾µ1
+Q
+java:S1128"4Remove this unused import 'java_cup.runtime.Symbol'.(ø¤ó³8´‚Ã¾µ1

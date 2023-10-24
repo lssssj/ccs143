@@ -1,0 +1,32 @@
+
+r	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÌ‹÷ûÿÿÿÿ8Ä¸äÙµ1
+m	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øé·Å8Ä¸äÙµ1
+r	java:S117i"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ØùÌüÿÿÿÿ8Ä¸äÙµ1
+r	java:S117u"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î¼§øüÿÿÿÿ8Ä¸äÙµ1
+n	java:S117‡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ğ§¸8Å¸äÙµ1
+M	java:S106¼"+Replace this use of System.err by a logger.(‰€æùùÿÿÿÿ8·¹äÙµ1
+u
+java:S3776À"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(«íÎ·şÿÿÿÿ8·¹äÙµ1
+M	java:S106Â"+Replace this use of System.err by a logger.(‰€æùùÿÿÿÿ8·¹äÙµ1
+y
+java:S2159Í"VRemove this call to "equals"; comparisons between unrelated types always return false.(¼™ öıÿÿÿÿ8¸¹äÙµ1
+o
+java:S3457Ñ"Q%n should be used in place of \n to produce the platform-specific line separator.(‘Ò¶ñ8¸¹äÙµ1
+t
+java:S3457Ô"Q%n should be used in place of \n to produce the platform-specific line separator.(…Ø¥­ıÿÿÿÿ8¸¹äÙµ1
+o
+java:S3457×"Q%n should be used in place of \n to produce the platform-specific line separator.(ÿù½8¸¹äÙµ1
+o
+java:S3457Ú"Q%n should be used in place of \n to produce the platform-specific line separator.(“æÿ8¹¹äÙµ1
+y
+java:S2175Ü"VA "Map<AbstractSymbol, class_c>" cannot contain a "String" in a "AbstractSymbol" type.(Õ±îÿÿÿÿÿ8¹¹äÙµ1
+o
+java:S3457İ"Q%n should be used in place of \n to produce the platform-specific line separator.(‡èî—8¹¹äÙµ1
+o
+java:S3457ä"Q%n should be used in place of \n to produce the platform-specific line separator.(Ûë°®8¹¹äÙµ1
+t
+java:S3457ô"Q%n should be used in place of \n to produce the platform-specific line separator.(ñçÑâùÿÿÿÿ8¼¹äÙµ1
+G
+java:S1659€"$Declare "index2" on a separate line.(ÍÔŸáÿÿÿÿÿ8¿¹äÙµ1
+T
+java:S1128"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ8Ã¹äÙµ1

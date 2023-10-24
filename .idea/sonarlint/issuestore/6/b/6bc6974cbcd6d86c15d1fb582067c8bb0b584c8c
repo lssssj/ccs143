@@ -1,0 +1,19 @@
+
+L
+java:S3740!"/Provide the parametrized type for this generic.(øşÛ8íÂ‰í´1
+Q
+java:S37404"/Provide the parametrized type for this generic.(ãûÛûÿÿÿÿ8íÂ‰í´1
+m	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³àşñ8íÂ‰í´1
+7
+java:S1220""Move this file to a named package.8îÂ‰í´1
+v	java:S115$"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÿï…Î8óÂ‰í´1
+{	java:S115'"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(·À¡‚ÿÿÿÿÿ8óÂ‰í´1
+s	java:S116*"WRename this field "basic_status" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßğöì8óÂ‰í´1
+q
+java:S1845\"ORename method "basic" to prevent any misunderstanding/clash with field "Basic".(ÖÌƒ¦ıÿÿÿÿ8õÂ‰í´1
+‚
+java:S1149!"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(øşÛ8õÂ‰í´1
+b
+java:S1124$"EReorder the modifiers to comply with the Java Language Specification.(ÿï…Î8öÂ‰í´1
+g
+java:S1124'"EReorder the modifiers to comply with the Java Language Specification.(·À¡‚ÿÿÿÿÿ8÷Â‰í´1

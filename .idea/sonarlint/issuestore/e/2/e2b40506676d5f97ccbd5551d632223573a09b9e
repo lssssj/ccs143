@@ -1,0 +1,63 @@
+
+y
+java:S11040"WMake cgen_Memmgr a static final constant or non-public and provide accessors if needed.(¼øç½şÿÿÿÿ8å†ê´1
+y
+java:S11045"\Make cgen_Memmgr_Test a static final constant or non-public and provide accessors if needed.(Ş¬ôÆ8è†ê´1
+z
+java:S1104:"]Make cgen_Memmgr_Debug a static final constant or non-public and provide accessors if needed.(†¡µŒ8è†ê´1
+{
+java:S1104="YMake cgen_optimize a static final constant or non-public and provide accessors if needed.(¸‚šªùÿÿÿÿ8è†ê´1
+u
+java:S1104@"XMake out_filename a static final constant or non-public and provide accessors if needed.(³ñàÖ8è†ê´1
+t
+java:S1104C"WMake in_filename a static final constant or non-public and provide accessors if needed.(ğÙ¡8è†ê´1
+z
+java:S1104F"XMake parser_debug a static final constant or non-public and provide accessors if needed.(´Ä¼—üÿÿÿÿ8è†ê´1
+z
+java:S1104I"XMake semant_debug a static final constant or non-public and provide accessors if needed.(–ñ„óøÿÿÿÿ8è†ê´1
+r
+java:S1104L"VMake cgen_debug a static final constant or non-public and provide accessors if needed.(–Ÿê8è†ê´1
+S
+java:S14440"1Make this "public static cgen_Memmgr" field final(¼øç½şÿÿÿÿ8é†ê´1
+S
+java:S14445"6Make this "public static cgen_Memmgr_Test" field final(Ş¬ôÆ8é†ê´1
+T
+java:S1444:"7Make this "public static cgen_Memmgr_Debug" field final(†¡µŒ8é†ê´1
+U
+java:S1444="3Make this "public static cgen_optimize" field final(¸‚šªùÿÿÿÿ8é†ê´1
+O
+java:S1444@"2Make this "public static out_filename" field final(³ñàÖ8é†ê´1
+N
+java:S1444C"1Make this "public static in_filename" field final(ğÙ¡8é†ê´1
+T
+java:S1444F"2Make this "public static parser_debug" field final(´Ä¼—üÿÿÿÿ8é†ê´1
+T
+java:S1444I"2Make this "public static semant_debug" field final(–ñ„óøÿÿÿÿ8é†ê´1
+L
+java:S1444L"0Make this "public static cgen_debug" field final(–Ÿê8é†ê´1
+x
+java:S30080"VRename this field "cgen_Memmgr" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼øç½şÿÿÿÿ8³’†ê´1
+x
+java:S30085"[Rename this field "cgen_Memmgr_Test" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş¬ôÆ8³’†ê´1
+y
+java:S3008:"\Rename this field "cgen_Memmgr_Debug" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†¡µŒ8³’†ê´1
+z
+java:S3008="XRename this field "cgen_optimize" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸‚šªùÿÿÿÿ8³’†ê´1
+t
+java:S3008@"WRename this field "out_filename" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ñàÖ8³’†ê´1
+s
+java:S3008C"VRename this field "in_filename" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÙ¡8³’†ê´1
+y
+java:S3008F"WRename this field "parser_debug" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´Ä¼—üÿÿÿÿ8³’†ê´1
+y
+java:S3008I"WRename this field "semant_debug" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ñ„óøÿÿÿÿ8³’†ê´1
+q
+java:S3008L"URename this field "cgen_debug" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–Ÿê8³’†ê´1
+\
+java:S1118":Add a private constructor to hide the implicit public one.(µŠóùÿÿÿÿ8µ’†ê´1
+o
+java:S3776T"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(¬¹Å8¹’†ê´1
+G
+java:S1197T"*Move the array designators [] to the type.(¬¹Å8»’†ê´1
+G	java:S106["+Replace this use of System.err by a logger.(Ö¢¶Ü8½’†ê´1
+H	java:S106Œ"+Replace this use of System.err by a logger.(Â˜í—8Á’†ê´1

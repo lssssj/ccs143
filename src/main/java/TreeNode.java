@@ -331,5 +331,7 @@ abstract class TreeNode {
     out.println(Utilities.pad(n) + "#" + lineNumber);
   }
 
+  public abstract <R, C> R accept(AstVisitor<R, C> visitor, C context);
+
 }
 

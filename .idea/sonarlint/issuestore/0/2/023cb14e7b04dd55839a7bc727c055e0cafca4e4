@@ -1,0 +1,22 @@
+
+L
+java:S3740""/Provide the parametrized type for this generic.(Ë˜ô8ñ€Œí´1
+R
+java:S3740å"/Provide the parametrized type for this generic.(«™ÔÙşÿÿÿÿ8ô€Œí´1
+M
+java:S3740ì"/Provide the parametrized type for this generic.(¼ğƒˆ8ô€Œí´1
+M
+java:S3740ù"/Provide the parametrized type for this generic.(ÿ«ñÄ8ô€Œí´1
+s	java:S117Ç"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÌ‹÷ûÿÿÿÿ8õ€Œí´1
+n	java:S117å"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øé·Å8õ€Œí´1
+s	java:S117†"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ‘æ»øÿÿÿÿ8õ€Œí´1
+s	java:S117Œ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ØùÌüÿÿÿÿ8õ€Œí´1
+s	java:S117š"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î¼§øüÿÿÿÿ8õ€Œí´1
+n	java:S117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ğ§¸8õ€Œí´1
+‚
+java:S1149""eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(Ë˜ô8ú€Œí´1
+M	java:S106‚"+Replace this use of System.out by a logger.(Œğ£³ÿÿÿÿÿ8Œí´1
+M	java:S106"+Replace this use of System.out by a logger.(…îà¦ÿÿÿÿÿ8Œí´1
+H	java:S106“"+Replace this use of System.out by a logger.(¢ÓÌÆ8Œí´1
+H	java:S106–"+Replace this use of System.out by a logger.(ü¬°»8Œí´1
+H	java:S106"+Replace this use of System.out by a logger.(Ó•ÊÎ8‘Œí´1

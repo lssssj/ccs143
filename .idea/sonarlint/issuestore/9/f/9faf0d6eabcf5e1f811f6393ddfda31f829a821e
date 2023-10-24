@@ -1,0 +1,17 @@
+
+¼
+java:S6539"ŸSplit this â€œMonster Classâ€ into smaller and more specialized ones to reduce its dependencies on other classes from 42 to the maximum authorized 20 or less.(ìÛ•z8¬ë‚Úµ1
+d
+java:S2259Y"BA "NullPointerException" could be thrown; "type" is nullable here.(ÀŠ¹’ÿÿÿÿÿ8Ñë‚Úµ1
+t	java:S116"XRename this field "current_class" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ÿŠÆ8Óë‚Úµ1
+L	java:S106"+Replace this use of System.out by a logger.(ªìÒüÿÿÿÿ8×ë‚Úµ1
+n
+java:S3457V"Q%n should be used in place of \n to produce the platform-specific line separator.(Õ¼Ü 8Ûë‚Úµ1
+s
+java:S3457Z"Q%n should be used in place of \n to produce the platform-specific line separator.(€ÕÜŒÿÿÿÿÿ8Şë‚Úµ1
+n
+java:S3457m"Q%n should be used in place of \n to produce the platform-specific line separator.(…ğıÕ8áë‚Úµ1
+t
+java:S3457ß"Q%n should be used in place of \n to produce the platform-specific line separator.(üÈ²æøÿÿÿÿ8ëë‚Úµ1
+n
+java:S3457‚"Q%n should be used in place of \n to produce the platform-specific line separator.(Í£‰M8îë‚Úµ1
